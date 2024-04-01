@@ -28,26 +28,28 @@ export default function Profile() {
     },
   ];
   return (
-    <div className="  w-full">
-      <p className="text-center text-4xl font-semibold py-10 text-[#004a89]  ">
-        Welcome to Admin Panel!!!
-      </p>
-      <div className="flex items-center justify-evenly  ">
-        {dashboarddata?.map((items) => {
-          return (
-            <div
-              key={items.id}
-              className="shadow-md  hover:scale-105 transform transition-transform ease-in-out duration-300 "
-            >
-              <ProfileCard
-                title={items.title}
-                number={items.recordAmount}
-                imageSrc={items.imageName}
-              />
-            </div>
-          );
-        })}
+    <main className=" flex flex-col  ">
+      <div className="  w-full  ">
+        <p className="text-center  text-4xl font-semibold py-10 text-[#004a89]  ">
+          Welcome to Admin Panel!!!
+        </p>
+        <div className="md:flex  md:items-center md:justify-evenly grid grid-cols-2 gap-5 md:px-0 px-4 ">
+          {dashboarddata?.map((items) => {
+            return (
+              <div
+                key={items.id}
+                className="shadow-md  hover:scale-105 transform transition-transform ease-in-out duration-300 "
+              >
+                <ProfileCard
+                  title={items.title}
+                  number={items.recordAmount}
+                  imageSrc={items.imageName}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

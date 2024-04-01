@@ -6,7 +6,11 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 export default function Login() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm();
   const router = useRouter();
   const [show, setShow] = useState(false);
   const handleShowPw = () => {
@@ -79,7 +83,8 @@ export default function Login() {
               type="submit"
               className="text-white py-3 text-xl font-medium "
             >
-              Submit
+              {isSubmitting ? "Submitting...." : "Submit"}
+              {/* Submit */}
             </button>
           </div>
         </div>

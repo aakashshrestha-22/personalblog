@@ -16,7 +16,11 @@ import {
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 export default function Sidebar() {
+  const {
+    formState: { isSubmitting },
+  } = useForm();
   const [showSidebar, setShowSidebar] = useState(false);
   const router = useRouter();
   const toggleSidebar = () => {
@@ -33,7 +37,7 @@ export default function Sidebar() {
     }
   };
   return (
-    <div className=" fixed min-h-screen md:w-60 w-40  ">
+    <div className=" fixed z-40 min-h-screen md:w-60  w-40  ">
       <div className="md:hidden cursor-pointer" onClick={toggleSidebar}>
         {showSidebar ? (
           <FaTimes className="text-2xl text-gray-800" />
@@ -53,7 +57,7 @@ export default function Sidebar() {
           <ul>
             <li className="mb-5">
               <Link
-                href="/"
+                href="/profile"
                 className="flex items-center text-gray-300 hover:text-white"
                 onClick={toggleSidebar}
               >
@@ -63,7 +67,7 @@ export default function Sidebar() {
             </li>
             <li className="mb-5">
               <Link
-                href="/profile"
+                href="/travels"
                 className="flex items-center text-gray-300 hover:text-white"
                 onClick={toggleSidebar}
               >
@@ -107,7 +111,7 @@ export default function Sidebar() {
           className=" bg-red-500 px-2 py-2 rounded-md text-xl mt-10 "
           onClick={logout}
         >
-          Log Out
+          {isSubmitting ? "Logging Out.." : "Log Out"}
         </button>
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function ProfileCard({ number, title, imageSrc }) {
               alt="logo-img"
               // src={"/assets/images/mother.png"}
               src={imageSrc}
-              className="w-[50px]"
+              className="md:w-[50px] w-[40px] "
             />
           </div>
         </div>
