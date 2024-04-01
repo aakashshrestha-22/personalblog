@@ -15,7 +15,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       data = { ...data };
-      const response = await axios.post("/api/register", data);
+      const response = await axios.post("/api/users/register", data);
       if (response.status === 201) {
         toast.success(response.message, {
           icon: "🚀",

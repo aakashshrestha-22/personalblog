@@ -13,12 +13,24 @@ import {
   FaHotel,
   FaPizzaSlice,
 } from "react-icons/fa";
-
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
-
+  const router = useRouter();
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
+  };
+  const logout = async () => {
+    try {
+      await axios.get("/api/users/logout");
+      toast.success("Log Out Successfull");
+      router.push("/login");
+    } catch (error) {
+      console.log(error.message);
+      toast.error("error");
+    }
   };
   return (
     <div className=" fixed min-h-screen md:w-60 w-40  ">
@@ -91,6 +103,12 @@ export default function Sidebar() {
             </li>
           </ul>
         </nav>
+        <button
+          className=" bg-red-500 px-2 py-2 rounded-md text-xl mt-10 "
+          onClick={logout}
+        >
+          Log Out
+        </button>
       </div>
     </div>
   );
